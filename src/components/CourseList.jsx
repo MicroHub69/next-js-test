@@ -63,7 +63,6 @@ const FilteredCourses = ({ Courses }) => {
 export default FilteredCourses;
 
 let CoursePipe = styled.section`
-  margin-top: 70px;
   transition: all 0.5s;
   @media (min-width: 1011px) {
     margin-left: 20px;

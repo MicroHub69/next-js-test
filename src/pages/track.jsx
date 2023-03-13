@@ -161,6 +161,11 @@ const TrackLibrary = () => {
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
   const [stepContent, setStepContent] = useState();
   const [width, setWidth] = useState(70);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
 
   const [state, setState] = useState({
     Courses: AllTracks,
@@ -228,7 +233,10 @@ const TrackLibrary = () => {
 
       <StyledCourses className="container">
         <section className="course_brick">
-          <div className="filtersBox">
+          <div className="filtersBox" id={isActive ? "activeFilter" : ""}>
+            <button onClick={handleClick} className="mix_btn">
+              close
+            </button>
             <div className="main_Box">
               <h4>Filter</h4>
               <CourseFilters
@@ -238,6 +246,9 @@ const TrackLibrary = () => {
             </div>
           </div>
           <div className="courseChoosed">
+            <button onClick={handleClick} className="mix_btn">
+              Filter
+            </button>
             <FilteredCourses Courses={state.Courses} />
           </div>
         </section>
@@ -249,6 +260,7 @@ const TrackLibrary = () => {
 
 let StyledCourses = styled.section`
   .course_brick {
+    // position: relative;
     display: flex;
     .main_Box {
       // background-color: yellow;
@@ -278,11 +290,29 @@ let StyledCourses = styled.section`
     }
     .courseChoosed {
       width: 80%;
+      margin-top: 70px;
       // background: pink;
+    }
+    @media (min-width: 1011px) {
+      .mix_btn {
+        display: none;
+      }
     }
     @media (max-width: 1011px) {
       .filtersBox {
-        display: none;
+        width: 100%;
+        height: 1000%;
+        max-width: 300px;
+        position: absolute;
+
+        transform: translateX(-700px);
+        transition: 0.3s;
+        background: var(--White);
+        z-index: 1000;
+        left: 0;
+      }
+      #activeFilter {
+        transform: translateX(0px);
       }
       .courseChoosed {
         width: 100%;

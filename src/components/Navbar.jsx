@@ -34,7 +34,7 @@ const Navbar = (props) => {
             <img
               src="https://instincthub.com/static/media/instincthub.87d965bf287cdcdc5874.png"
               alt=""
-              className="logo slide-in-right"
+              className="logo fade-in-right"
             />
             {/* Hello */}
             <SearchField id="media" />
